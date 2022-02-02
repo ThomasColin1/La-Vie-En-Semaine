@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=PT Serif">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+        <style type="text/css">
+            body {
+                background-color: #1C2333;
+                /* font-family: "PT Serif", serif; */
+                font-family: "Ubuntu, sans-serif";
+                color: #F5F9FC;
+            }
+            body {
+                text-align: center;
+            }
+            #span{
+                font-size:18px;
+            }
+            .form {
+                line-height: 1.5;
+            }
+            input, #calculate{
+                font-size:15px;
+            }
+            #conteneur {
+                text-align: center;
+            }
+            #affichage {
+                display: inline-block;
+                text-align: left;
+            }
+            #affichage {
+                word-spacing: 0.01px;
+                
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1 id="demo">Représentation de ta vie en semaines</h1>
+        
+        <div class="form">
+            <span id="span">Je suis né le </span>
+            <input type="text" placeholder="01-01-2000" id="date"/>
+            <span id="span"><br>Je pense vivre </span>
+            <input type="text" placeholder="90" id="age"/>
+            <span id="span"> ans <br></span>
+            <button id="calculate" onclick="Calculer(); console.log('qsdlkfhj');">Afficher</button>
+        </div>
+        <div id="conteneur">
+            <div id="legende" style="visibility: hidden"><p>■ = Semaines déjà vécues<br><span style='color: #9E9E9E'>■</span> = Semaines qu'il reste à vivre<br><span style='color: #600000'>■</span> = Semaine actuelle</p></div>
+            <div id="affichage"></div>
+        </div>
+        <script>
+            // document.getElementById("demo").innerHTML = "qksdjkq";
+
+            
+
+            function Calculer(){
+                document.getElementById("legende").style.visibility = "visible";
+                var x = document.getElementById('date').value;
+                var age = document.getElementById('age').value;
+                // console.log(x);
+                jour=x.substr(0,2);
+                mois=x.substr(3,2);
+                mois=mois-1;
+                annee=x.substr(6,4);
+                let naissance=new Date(annee,mois,jour);
+                let anneenaiss = new Date(annee,0,1);
+                let date = Date.now();
+                var difference=-naissance+date;
+                var differencenaiss=naissance-anneenaiss;
+                difference=Math.floor(difference/1000/60/60/24/7);
+                differencenaiss=Math.floor(differencenaiss/1000/60/60/24/7);
+
+                console.log(differencenaiss);
+
+
+                var y = parseInt(age,10)*52;
+                console.log(y);
+
+                var cubes="<br><br><br>";
+                // console.log(jour);
+                // console.log(mois);
+                // console.log(annee);
+                // console.log(naissance);
+                // console.log(Date.now());
+                // console.log(difference);
+
+                let n=0;
+                cubes+=(parseInt(annee,10)+parseInt(n,0));
+                cubes+=" ... ";
+                annee++;
+                cubes+="<span style='color: #1C2333'>";
+                for(let i=0;i<differencenaiss; i++){
+                    cubes += "■ ";
+                }
+                cubes+="</span>";
+
+                for (let i = differencenaiss; i < difference+differencenaiss; i++) {
+                    if(i%52==0){
+                        cubes+="<br>";
+                        cubes+=(parseInt(annee,10)+parseInt(n,0));
+                        cubes+=" ... ";
+                        annee++;
+                    }
+
+                    if(i==difference+differencenaiss-1){
+                        cubes += "<span style='color: #600000'>"
+                    }
+                    cubes += "■ ";
+                    if(i==difference+differencenaiss-1){
+                        cubes += "</span>"
+                    }
+                    
+                }
+
+                cubes+="<span style='color: #9E9E9E'>";
+                for(let i=difference+differencenaiss;i<y+differencenaiss;i++){
+                    if(i%52==0){
+                        cubes+="<span style='color: white'>";
+                        cubes+="<br>";
+                        cubes+=(annee+n);
+                        cubes+=" ... ";
+                        annee++;
+                        cubes+="</span>";
+                    }
+                    cubes += "■ ";
+                }
+                cubes+="</span>";
+                document.getElementById("affichage").innerHTML = cubes;
+            }
+        </script>
+
+    </body>
+</html>
+
