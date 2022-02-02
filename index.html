@@ -53,7 +53,7 @@
             <button id="calculate" onclick="Calculer(); console.log('qsdlkfhj');">Afficher</button>
         </div>
         <div id="conteneur">
-            <div id="legende" style="visibility: hidden"><p>■ = Semaines déjà vécues<br><span style='color: #9E9E9E'>■</span> = Semaines qu'il reste à vivre<br><span style='color: #600000'>■</span> = Semaine actuelle</p></div>
+            <div id="legende" style="visibility: hidden"><p>■ = Semaines déjà vécues<br><span style='color: #808080'>■</span> = Semaines qu'il reste à vivre<br><span style='color: #600000'>■</span> = Semaine actuelle</p></div>
             <div id="affichage"></div>
         </div>
         <script>
@@ -120,7 +120,7 @@
                     
                 }
 
-                cubes+="<span style='color: #9E9E9E'>";
+                cubes+="<span style='color: #808080'>";
                 for(let i=difference+differencenaiss;i<y+differencenaiss;i++){
                     if(i%52==0){
                         cubes+="<span style='color: white'>";
